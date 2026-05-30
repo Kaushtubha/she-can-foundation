@@ -5,9 +5,6 @@ const nextConfig = {
     domains: ['images.unsplash.com', 'randomuser.me', 'picsum.photos'],
     unoptimized: false,
   },
-  experimental: {
-    optimizeCss: true,
-  },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
