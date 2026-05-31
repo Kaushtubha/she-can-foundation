@@ -1,8 +1,50 @@
 # 💜 She Can Foundation — Full Stack NGO Website
 
-> **Award-worthy internship project** | Next.js + Three.js + Node.js + MongoDB
+> **Full Stack Internship Project** | Next.js + Three.js + Node.js + MongoDB
 
 A cinematic, fully responsive full-stack NGO website with 3D animations, glassmorphism UI, particle effects, and a real volunteer application backend.
+
+---
+
+## 🌐 Live Demo
+
+| | Link |
+|---|---|
+| 🚀 **Frontend (Live)** | [she-can-foundation-mu-indol.vercel.app](https://she-can-foundation-mu-indol.vercel.app) |
+| ⚙️ **Backend API** | [she-can-foundation-xz4b.onrender.com](https://she-can-foundation-xz4b.onrender.com) |
+| 💾 **GitHub Repo** | [github.com/Kaushtubha/she-can-foundation](https://github.com/Kaushtubha/she-can-foundation) |
+
+---
+
+## 🏗️ What We Built
+
+### 📄 Pages & Sections
+| Section | Description |
+|---------|-------------|
+| 🦸 **Hero Section** | Full-screen landing with 3D animated globe, particle background, and animated tagline |
+| 💡 **About Section** | NGO mission, values, and team info with scroll-reveal animations |
+| 📊 **Impact Section** | Animated counters showing lives touched, cities active, and milestones timeline |
+| 🙋 **Volunteer Section** | Real working form connected to backend — submissions saved to MongoDB |
+| 🖼️ **Gallery Section** | Visual showcase with hover effects and glassmorphism cards |
+| 💬 **Testimonials Section** | Stories and quotes from community members |
+| 🧭 **Navbar** | Sticky navigation with smooth scroll and dark/light mode toggle |
+| 🦶 **Footer** | Links, social icons, and animated wave |
+
+### 🎨 UI Components
+| Component | Description |
+|-----------|-------------|
+| 🖱️ **Custom Cursor** | Dual-element magnetic cursor with velocity-based lag using RAF |
+| ✨ **Particles Background** | Canvas-based particle system with mouse repulsion physics |
+| ⏳ **Loading Screen** | Animated splash screen on first load |
+
+### ⚙️ Backend
+| Feature | Description |
+|---------|-------------|
+| 📩 **Volunteer API** | `POST /api/volunteers` — saves form data to MongoDB |
+| 📋 **Applications List** | `GET /api/volunteers` — fetch all submissions with pagination |
+| 📈 **Stats API** | `GET /api/volunteers/stats` — summary statistics |
+| 🏥 **Health Check** | `GET /api/health` — server status endpoint |
+| 🔒 **Security** | Helmet headers, rate limiting, express-validator |
 
 ---
 
@@ -18,21 +60,33 @@ A cinematic, fully responsive full-stack NGO website with 3D animations, glassmo
 
 ---
 
+## ✨ Features
+
+- 🌍 **3D Interactive Globe** — Three.js with MeshDistortMaterial & orbit rings
+- 🎇 **Particle System** — Pure canvas with mouse repulsion physics
+- 🖱️ **Magnetic Custom Cursor** — Dual-element RAF loop with velocity-based lag
+- 📱 **Fully Responsive** — Mobile-first design with Tailwind CSS
+- 🌙 **Glassmorphism UI** — Modern frosted glass design system
+- 📩 **Volunteer Form** — Real backend with MongoDB storage & validation
+- ⚡ **Smooth Animations** — Framer Motion scroll reveals & page transitions
+- 🔒 **Secure Backend** — Helmet, rate limiting, express-validator
+
+---
+
 ## 📁 Project Structure
 
 ```
 she-can-foundation/
 ├── frontend/
 │   ├── components/
-│   │   ├── 3d/                  # Three.js scene components
-│   │   ├── sections/            # Page sections
+│   │   ├── sections/
 │   │   │   ├── HeroSection.jsx
 │   │   │   ├── AboutSection.jsx
 │   │   │   ├── ImpactSection.jsx
 │   │   │   ├── VolunteerSection.jsx
 │   │   │   ├── GallerySection.jsx
 │   │   │   └── TestimonialsSection.jsx
-│   │   ├── ui/                  # Reusable UI
+│   │   ├── ui/
 │   │   │   ├── CustomCursor.jsx
 │   │   │   ├── LoadingScreen.jsx
 │   │   │   └── ParticlesBackground.jsx
@@ -40,15 +94,7 @@ she-can-foundation/
 │   │       ├── Navbar.jsx
 │   │       └── Footer.jsx
 │   ├── pages/
-│   │   ├── _app.jsx
-│   │   ├── _document.jsx
-│   │   └── index.jsx
-│   ├── styles/
-│   │   └── globals.css
-│   ├── public/
-│   ├── next.config.js
-│   ├── tailwind.config.js
-│   └── package.json
+│   └── styles/
 │
 └── backend/
     ├── models/
@@ -56,8 +102,7 @@ she-can-foundation/
     ├── routes/
     │   └── volunteers.js
     ├── server.js
-    ├── .env.example
-    └── package.json
+    └── .env.example
 ```
 
 ---
@@ -66,16 +111,16 @@ she-can-foundation/
 
 ### Prerequisites
 - Node.js 18+
-- npm or yarn
 - MongoDB Atlas account (free tier works)
-
----
 
 ### 1. Clone & Install
 
 ```bash
+git clone https://github.com/Kaushtubha/she-can-foundation.git
+cd she-can-foundation
+
 # Backend
-cd she-can-foundation/backend
+cd backend
 npm install
 cp .env.example .env
 # Fill in your MONGO_URI in .env
@@ -83,11 +128,7 @@ cp .env.example .env
 # Frontend
 cd ../frontend
 npm install
-cp .env.example .env.local
-# Set NEXT_PUBLIC_API_URL=http://localhost:5000
 ```
-
----
 
 ### 2. Start Backend
 
@@ -95,10 +136,7 @@ cp .env.example .env.local
 cd backend
 npm run dev
 # Server starts on http://localhost:5000
-# Visit http://localhost:5000/api/health to verify
 ```
-
----
 
 ### 3. Start Frontend
 
@@ -110,172 +148,48 @@ npm run dev
 
 ---
 
-## 🌐 Deployment Guide
-
-### Frontend → Vercel
-
-```bash
-cd frontend
-npx vercel --prod
-
-# Set environment variable in Vercel dashboard:
-# NEXT_PUBLIC_API_URL = https://your-backend.onrender.com
-```
-
-### Backend → Render
-
-1. Push backend folder to GitHub
-2. Create a new **Web Service** on [render.com](https://render.com)
-3. Set:
-   - Build command: `npm install`
-   - Start command: `node server.js`
-4. Add environment variables:
-   - `MONGO_URI` = your MongoDB Atlas URI
-   - `FRONTEND_URL` = your Vercel URL
-   - `NODE_ENV` = production
-
-### Database → MongoDB Atlas
-
-1. Go to [mongodb.com/atlas](https://mongodb.com/atlas)
-2. Create a free M0 cluster
-3. Whitelist IPs: `0.0.0.0/0` (or Render's IPs)
-4. Create DB user and copy the connection string to `MONGO_URI`
-
----
-
-## 🎨 Design System
-
-### Color Palette
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--neon-purple` | `#9b5de5` | Primary brand, CTAs |
-| `--neon-pink` | `#f15bb5` | Accents, hover states |
-| `--neon-blue` | `#00bbf9` | Highlights, orbit rings |
-| `--neon-cyan` | `#00f5d4` | Success states |
-| `--bg-primary` | `#030014` | Page background |
-
-### Typography
-- **Display**: Cormorant Garamond (headings, quotes)
-- **Body**: DM Sans (paragraphs, UI)
-- **Mono**: JetBrains Mono (labels, code, tags)
-
----
-
-## 🎭 How Animations Work
-
-### 1. Framer Motion
-- **Page transitions**: `AnimatePresence` with opacity fades between routes
-- **Scroll reveals**: `whileInView` with `viewport={{ once: true }}` for entrance animations
-- **Hover effects**: `whileHover` for tilt, scale, and glow on interactive elements
-- **Stagger children**: `transition.delay` offset per item for cascade reveals
-
-### 2. Three.js (React Three Fiber)
-- **Globe**: `MeshDistortMaterial` with animated `distort` creates fluid morphing
-- **Orbit rings**: `useFrame` hook for per-frame rotation updates
-- **Stars**: `@react-three/drei` Stars component with fade effect
-- **Float**: `<Float>` component for gentle hover animation
-
-### 3. Canvas Particles
-- Pure requestAnimationFrame loop
-- Connection lines drawn between nearby particles
-- Mouse repulsion field using distance-based force vectors
-- Each particle has pulsed glow using radial gradient
-
-### 4. CSS Animations
-- `gradientFlow` keyframe for animated text gradient
-- `scrollBounce` for hero scroll indicator
-- `waveMotion` for footer SVG wave
-- CSS `transition` for cursor tracking
-
----
-
-## 🔌 Backend API Reference
+## 🔌 API Reference
 
 ### `POST /api/volunteers`
 Submit a volunteer application.
 
-**Body:**
 ```json
 {
   "name": "Priya Sharma",
   "email": "priya@example.com",
   "phone": "9876543210",
   "skills": ["Teaching / Tutoring", "Web Development"],
-  "message": "I want to contribute my web dev skills to help girls learn coding."
+  "message": "I want to contribute my web dev skills."
 }
 ```
 
-**Response (201):**
-```json
-{
-  "success": true,
-  "message": "Application submitted successfully!",
-  "data": { "id": "...", "name": "Priya Sharma", "submittedAt": "..." }
-}
-```
-
-### `GET /api/volunteers`
-Fetch all applications with pagination.
-- Query params: `?page=1&limit=20`
-
-### `GET /api/volunteers/stats`
-Get summary statistics.
-
-### `GET /api/health`
-Health check endpoint.
+### `GET /api/volunteers` — Fetch all applications
+### `GET /api/volunteers/stats` — Get summary statistics
+### `GET /api/health` — Health check
 
 ---
 
-## 🏆 How to Impress Interviewers
+## 🎨 Design System
 
-### 1. Lead with Impact
-*"This website is for a real cause — empowering young women through tech. The design choices aren't random; they're intentional — the purple-pink-blue palette symbolizes strength, femininity, and possibility."*
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--neon-purple` | `#9b5de5` | Primary brand, CTAs |
+| `--neon-pink` | `#f15bb5` | Accents, hover states |
+| `--neon-blue` | `#00bbf9` | Highlights, orbit rings |
+| `--bg-primary` | `#030014` | Page background |
 
-### 2. Explain Architecture Decisions
-- **Next.js over CRA**: SSR/SSG for SEO, Image optimization, file-based routing
-- **MongoDB**: Schema flexibility for volunteer data with evolving fields
-- **Framer Motion + GSAP**: Framer for React-managed animations, GSAP for timeline-based scroll sequences
-
-### 3. Highlight Advanced Features
-- **Custom cursor system**: RAF loop with velocity-based lag — not a CSS trick
-- **Particle system**: Pure canvas with Verlet integration and mouse repulsion physics
-- **Form UX**: Multi-step validation, optimistic UI, success micro-animation
-- **3D Globe**: MeshDistortMaterial with real-time vertex distortion via Three.js shaders
-
-### 4. Show the Data Flow
-*"When a user submits the form: React validates → Axios POST → Express rate limiter → Mongoose schema validation → duplicate check pre-save hook → MongoDB save → 201 response → Framer Motion success animation → react-hot-toast notification."*
-
-### 5. Performance Wins
-- Dynamic imports for Three.js (code split, ~200KB saved)
-- `viewport={{ once: true }}` prevents scroll listener pile-up
-- Image optimization via Next.js `<Image>` component
-- Canvas particle count scales with viewport width
+**Fonts:** Cormorant Garamond (headings) · DM Sans (body) · JetBrains Mono (labels)
 
 ---
 
-## 📦 Key Dependencies Explained
+## 🚀 Deployment
 
-| Package | Why Used |
-|---------|----------|
-| `@react-three/fiber` | React renderer for Three.js — declarative 3D |
-| `@react-three/drei` | Helpers: Float, Stars, MeshDistortMaterial |
-| `framer-motion` | Production-grade React animation library |
-| `react-hot-toast` | Beautiful toast notifications, zero config |
-| `react-countup` | Animated counter that triggers on scroll |
-| `express-validator` | Declarative server-side input validation |
-| `helmet` | Sets secure HTTP headers automatically |
-| `express-rate-limit` | Prevents form spam and API abuse |
+| Service | Platform | Config |
+|---------|----------|--------|
+| Frontend | Vercel | Root dir: `frontend` |
+| Backend | Render | Start: `node server.js` |
+| Database | MongoDB Atlas | Free M0 cluster |
 
 ---
 
-## 🌟 Bonus Feature: Magnetic Cursor
-
-The custom cursor uses a dual-element system:
-1. **Dot** (8px): Follows mouse at 95% lerp speed — nearly instant
-2. **Outline** (40px): Follows at 12% lerp speed — silky lag effect
-
-On hover over interactive elements, the outline expands (60px) and changes color — creating a "magnetic pull" feel that no other NGO website has. This is pure `requestAnimationFrame` with no libraries.
-
----
-
-*Made with 💜 to demonstrate full-stack mastery, 3D web graphics, and real-world NGO storytelling.*
+*Made with 💜 for She Can Foundation — empowering youth through technology.*
